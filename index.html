@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#cbbcff">
+  <meta name="description" content="A little pastel fantasy birthday surprise for Khusbu, made with love by Mây.">
+  <title>For Khusbu ♡ | A Pastel Fantasy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="threeDScene" aria-hidden="true"></canvas>
+  <div class="sky-glow" aria-hidden="true"></div>
+  <div class="sparkle-field" id="sparkleField" aria-hidden="true"></div>
+  <div class="floating-field" id="floatingField" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <span class="brand">♡ a little magic for Khusbu ♡</span>
+    <div class="progress" aria-label="Card progress">
+      <span class="progress-dot active"></span><span class="progress-dot"></span>
+      <span class="progress-dot"></span><span class="progress-dot"></span>
+      <span class="progress-dot"></span><span class="progress-dot"></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- STAGE 1: COVER -->
+    <section class="scene active" id="scene1" aria-labelledby="coverTitle">
+      <div class="moon" aria-hidden="true">☾</div>
+      <div class="cloud cloud-one" aria-hidden="true"></div>
+      <div class="cloud cloud-two" aria-hidden="true"></div>
+      <div class="cover-content">
+        <p class="eyebrow">A tiny universe made just for you</p>
+        <h1 id="coverTitle">Happy Birthday<br><span>Khusbu</span><i>♡</i></h1>
+        <p class="cover-subtitle">A little pastel fantasy, filled with love and stardust.</p>
+        <div class="cover-icons" aria-hidden="true"><span>🎀</span><span>💖</span><span>⭐</span></div>
+        <button class="primary-button" data-next="2">Tap to begin <span>✧</span></button>
+      </div>
+      <p class="tiny-note">made with love by Mây</p>
+    </section>
+
+    <!-- STAGE 2: ENVELOPE -->
+    <section class="scene" id="scene2" aria-labelledby="envelopeTitle">
+      <p class="eyebrow">A special delivery has arrived</p>
+      <h2 id="envelopeTitle" class="scene-title">A little letter for you…</h2>
+      <button class="envelope-wrap" id="envelopeButton" aria-label="Open the birthday envelope">
+        <span class="envelope-heart">♡</span>
+        <span class="envelope-flap"></span>
+        <span class="envelope-letter">For my<br>sweet Khusbu</span>
+        <span class="envelope-front"></span>
+      </button>
+      <p class="hint" id="envelopeHint">Tap the envelope to open it ✨</p>
+      <button class="primary-button next-button" data-next="3" id="envelopeNext" hidden>Open your magical world →</button>
+      <button class="text-button" data-prev="1">← Back</button>
+    </section>
+
+    <!-- STAGE 3: MAIN FANTASY SCENE -->
+    <section class="scene" id="scene3" aria-labelledby="fantasyTitle">
+      <p class="eyebrow">Welcome to your little dream world</p>
+      <h2 id="fantasyTitle" class="scene-title">A world as lovely as you</h2>
+      <div class="fantasy-art-frame">
+        <img src="assets/khusbu-birthday-art.png" alt="A dreamy pastel 3D birthday illustration for Khusbu with a cake, hearts, stars and a fairytale castle">
+        <span class="art-shimmer" aria-hidden="true"></span>
+      </div>
+      <p class="scene-copy">May your new year sparkle with beautiful surprises, gentle days, and countless reasons to smile. ✨</p>
+      <button class="primary-button" data-next="4">Read your birthday wish 💌</button>
+      <button class="text-button" data-prev="2">← Back</button>
+    </section>
+
+    <!-- STAGE 4: PERSONAL LETTER -->
+    <section class="scene" id="scene4" aria-labelledby="letterTitle">
+      <p class="eyebrow">Written softly, from my heart</p>
+      <div class="letter-card">
+        <div class="letter-decor" aria-hidden="true">✧ ♡ ✧</div>
+        <h2 id="letterTitle">Happy Birthday,<br><span>my love!</span></h2>
+        <div class="wish-lines">
+          <p>May you always be happy, loved, and surrounded by beautiful things.</p>
+          <p>Please take good care of your health. May this new chapter bring you success, happiness, and wonderful opportunities in everything you do.</p>
+          <p>Always be the sweet and warm-hearted girl that you are.</p>
+          <p>No matter what happens, I'll always be here by your side. 💗</p>
+        </div>
+        <p class="signature">With all my love,<br><strong>Mây with heart ♡</strong></p>
+      </div>
+      <button class="primary-button" data-next="5">Make a birthday wish ✨</button>
+      <button class="text-button" data-prev="3">← Back</button>
+    </section>
+
+    <!-- STAGE 5: CELEBRATION -->
+    <section class="scene" id="scene5" aria-labelledby="celebrateTitle">
+      <p class="eyebrow">Make a wish, sweetheart</p>
+      <h2 id="celebrateTitle" class="scene-title">One little wish…<br><span>and a sky full of magic</span></h2>
+      <div class="celebration-cake" aria-label="Birthday cake">🎂</div>
+      <div class="wish-orb" aria-hidden="true">♡</div>
+      <p class="scene-copy">Close your eyes, make a wish, and let the stars carry it into the universe.</p>
+      <button class="primary-button" id="wishButton">Release the magic ✨</button>
+      <button class="primary-button" data-next="6">One last surprise →</button>
+      <button class="text-button" data-prev="4">← Back</button>
+    </section>
+
+    <!-- STAGE 6: FINALE -->
+    <section class="scene" id="scene6" aria-labelledby="finalTitle">
+      <div class="final-stars" aria-hidden="true">✦ ✧ ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆ ✧ ✦</div>
+      <div class="final-heart" aria-hidden="true">💖</div>
+      <h2 id="finalTitle" class="final-title">Forever by<br><span>your side</span></h2>
+      <p class="final-message">May life always be gentle with you, Khusbu.<br>Keep shining in your own beautiful way.</p>
+      <div class="final-signature">Mây with heart ♡</div>
+      <button class="primary-button" id="replayButton">Experience the magic again ↻</button>
+      <p class="tiny-note">A little birthday universe, made just for you.</p>
+    </section>
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="three-scene.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
