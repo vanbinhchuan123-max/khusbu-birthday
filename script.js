@@ -40,6 +40,7 @@ for (let i = 0; i < 55; i++) {
 }
 
 // Envelope opens on touch or click.
+playBirthdayMusic();
 const envelopeButton = document.getElementById("envelopeButton");
 const envelopeNext = document.getElementById("envelopeNext");
 const envelopeHint = document.getElementById("envelopeHint");
@@ -105,3 +106,15 @@ document.getElementById("replayButton").addEventListener("click", () => {
   showScene(1);
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+async function playBirthdayMusic() {
+  const music = document.getElementById("khusbuMusic");
+
+  if (!music) return;
+
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("Không thể phát nhạc:", error);
+  }
+}
