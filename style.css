@@ -367,3 +367,40 @@ h1 i { font-size: .52em; color: #ffeff9; vertical-align: top; }
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Music button placed beside the birthday envelope */
+.music-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 14px auto 18px;
+  position: relative;
+  z-index: 20;
+}
+.music-button {
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 999px;
+  padding: 11px 19px;
+  background: linear-gradient(135deg, #ffe0ef, #e4dcff 55%, #d4f3ff);
+  color: #5b4a75;
+  font: inherit;
+  font-size: .94rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(111, 83, 155, .22);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.music-button:hover, .music-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(111, 83, 155, .3);
+  outline: 2px solid rgba(255,255,255,.8);
+  outline-offset: 3px;
+}
+.music-note {
+  color: #fff;
+  font-size: .82rem;
+  text-shadow: 0 1px 8px #8d76b8;
+}

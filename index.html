@@ -50,6 +50,10 @@
         <span class="envelope-front"></span>
       </button>
       <p class="hint" id="envelopeHint">Tap the envelope to open it ✨</p>
+      <div class="music-control" aria-label="Birthday music controls">
+        <button class="music-button" id="musicButton" type="button" aria-pressed="false">🎵 Play birthday music</button>
+        <span class="music-note" id="musicStatus">A little melody for you ♡</span>
+      </div>
       <button class="primary-button next-button" data-next="3" id="envelopeNext" hidden>Open your magical world →</button>
       <button class="text-button" data-prev="1">← Back</button>
     </section>
@@ -109,6 +113,10 @@
     </section>
   </main>
 
+  <audio id="birthdayMusic" loop preload="auto">
+    <source src="./birthday-music.mp3.mp3" type="audio/mpeg">
+  </audio>
+
   <script type="importmap">
     {
       "imports": {
@@ -118,55 +126,5 @@
   </script>
   <script type="module" src="three-scene.js"></script>
   <script src="script.js"></script>
-
-<audio id="bgMusic" loop>
-  <source src="birthday-music.mp3.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicButton" onclick="toggleMusic()">
-  🎵 Play Music
-</button>
-
-<script>
-  const music = document.getElementById("bgMusic");
-  const musicButton = document.getElementById("musicButton");
-
-  async function toggleMusic() {
-    if (music.paused) {
-      try {
-        await music.play();
-        musicButton.textContent = "🔇 Pause Music";
-      } catch (error) {
-        alert("Please tap the music button again.");
-      }
-    } else {
-      music.pause();
-      musicButton.textContent = "🎵 Play Music";
-    }
-  }
-</script>
-  
-<audio id="khusbuMusic" loop preload="auto">
-  <source src="./birthday-music.mp3.mp3" type="audio/mpeg">
-</audio>
-  
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const music = document.getElementById("khusbuMusic");
-
-  if (!music) {
-    console.error("Không tìm thấy audio có id khusbuMusic");
-    return;
-  }
-
-  document.addEventListener("click", function startMusic() {
-    if (music.paused) {
-      music.play().catch(function (error) {
-        console.error("Không phát được nhạc:", error);
-      });
-    }
-  }, { once: true });
-});
-</script>
 </body>
 </html>

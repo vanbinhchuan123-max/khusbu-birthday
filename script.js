@@ -3,6 +3,43 @@ const dots = [...document.querySelectorAll(".progress-dot")];
 let currentScene = 1;
 let magicInterval = null;
 
+// Birthday music: the browser may block autoplay, so start it from a real tap.
+const birthdayMusic = document.getElementById("birthdayMusic");
+const musicButton = document.getElementById("musicButton");
+const musicStatus = document.getElementById("musicStatus");
+
+async function startBirthdayMusic() {
+  if (!birthdayMusic) return;
+  try {
+    await birthdayMusic.play();
+    if (musicButton) {
+      musicButton.textContent = "🔇 Pause birthday music";
+      musicButton.setAttribute("aria-pressed", "true");
+    }
+    if (musicStatus) musicStatus.textContent = "Playing softly just for you ♡";
+  } catch (error) {
+    if (musicStatus) musicStatus.textContent = "Tap the music button to start ♡";
+    console.warn("Music playback was blocked or the audio file could not load.", error);
+  }
+}
+
+function pauseBirthdayMusic() {
+  if (!birthdayMusic) return;
+  birthdayMusic.pause();
+  if (musicButton) {
+    musicButton.textContent = "🎵 Play birthday music";
+    musicButton.setAttribute("aria-pressed", "false");
+  }
+  if (musicStatus) musicStatus.textContent = "A little melody for you ♡";
+}
+
+if (musicButton && birthdayMusic) {
+  musicButton.addEventListener("click", async () => {
+    if (birthdayMusic.paused) await startBirthdayMusic();
+    else pauseBirthdayMusic();
+  });
+}
+
 function showScene(number) {
   currentScene = number;
   scenes.forEach((scene, index) => {
@@ -40,12 +77,13 @@ for (let i = 0; i < 55; i++) {
 }
 
 // Envelope opens on touch or click.
-playBirthdayMusic();
 const envelopeButton = document.getElementById("envelopeButton");
 const envelopeNext = document.getElementById("envelopeNext");
 const envelopeHint = document.getElementById("envelopeHint");
 
 envelopeButton.addEventListener("click", () => {
+  // Tapping the envelope is a user gesture, so try to start music here too.
+  startBirthdayMusic();
   envelopeButton.classList.add("open");
   envelopeHint.textContent = "A little love is waiting inside ♡";
   envelopeNext.hidden = false;
@@ -106,15 +144,3 @@ document.getElementById("replayButton").addEventListener("click", () => {
   showScene(1);
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
-async function playBirthdayMusic() {
-  const music = document.getElementById("khusbuMusic");
-
-  if (!music) return;
-
-  try {
-    await music.play();
-  } catch (error) {
-    console.log("Không thể phát nhạc:", error);
-  }
-}
